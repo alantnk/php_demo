@@ -1,2 +1,2 @@
 <?php
-echo "Hello, World!";
+require "index.view.php";
