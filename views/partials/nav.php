@@ -8,10 +8,13 @@
                 <div class="block">
                     <div class="ml-10 flex items-baseline space-x-4">
 
-                        <a href="/" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">Home</a>
-                        <a href="/about.php" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">About</a>
+                        <a href="/" class="<?= urlIs("/") ? "text-white bg-gray-900" : "hover:bg-gray-700 hover:text-white"; ?> text-gray-300 px-3 py-2 text-sm font-medium rounded-md" aria-current="page">Home</a>
+
+                        <a href="/about.php" class="<?= urlIs("/about.php") ? "text-white bg-gray-900" : "hover:bg-gray-700 hover:text-white"; ?> text-gray-300 px-3 py-2 text-sm font-medium rounded-md">About</a>
+
                         <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Notes</a>
-                        <a href="/contact.php" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
+
+                        <a href="/contact.php" class="<?= urlIs("/contact.php") ? "text-white bg-gray-900" : "hover:bg-gray-700 hover:text-white"; ?> text-gray-300 px-3 py-2 text-sm font-medium rounded-md">Contact</a>
 
                     </div>
                 </div>
