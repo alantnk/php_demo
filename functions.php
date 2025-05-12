@@ -1,5 +1,14 @@
 <?php
 
+function niceExceptionHandler($ex)
+{
+    // Tell the user something unthreatening
+    echo "Sorry! Something unexpected happened. Please try again later.";
+    // Log more detailed information for a sysadmin to review
+    error_log("{$ex->getMessage()} in {$ex->getFile()} @ {$ex->getLine()}");
+    error_log($ex->getTraceAsString());
+}
+
 function dd($value)
 {
     echo "<pre>";
