@@ -1,2 +1,4 @@
 <?php
-require "index.view.php";
+$heading = "Home";
+
+require "views/index.view.php";
