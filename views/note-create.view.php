@@ -8,7 +8,7 @@
         <form method="POST">
             <label for="body">Text:</label>
             <div>
-                <textarea id="body" name="body" class="bg-blue-100" placeholder="You text here"></textarea>
+                <textarea id="body" name="body" class="bg-blue-100 p-1 w-96 h-48" placeholder="You text here"></textarea>
             </div>
             <p>
                 <button type="submit" class="cursor-pointer px-1 rounded hover:border">Create</button>

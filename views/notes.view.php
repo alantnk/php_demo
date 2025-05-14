@@ -12,7 +12,7 @@
                 <li>
                     <a href="/note?id=<?= $note['id'] ?>" class="text-blue-400 hover:underline">
 
-                        <?= $note['body']; ?>
+                        <?= htmlentities($note['body']); ?>
                     </a>
                 </li>
             <?php endforeach; ?>

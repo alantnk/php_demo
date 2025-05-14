@@ -15,7 +15,7 @@
         </p>
 
         <p>
-            <?= $note['body'] ?>
+            <?= htmlentities($note['body']) ?>
         </p>
     </div>
 </main>
