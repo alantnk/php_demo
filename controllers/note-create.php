@@ -7,12 +7,10 @@ $db = new Database($config['database']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = [];
-    if (strlen($_POST['body']) === 0) {
-        $errors['body'] = 'A body is required';
-    }
 
-    if (strlen($_POST['body']) > 500) {
-        $errors['body'] = 'The body can not be more than 500 characters';
+
+    if (! Validator::string($_POST['body'], 500)) {
+        $errors['body'] = 'Body can not be empty or exceed 500 characters.';
     }
 
     if (empty($errors)) {
