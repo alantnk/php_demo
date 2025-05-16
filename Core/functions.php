@@ -1,5 +1,7 @@
 <?php
 
+use Core\Response;
+
 function niceExceptionHandler($ex)
 {
     // Tell the user something unthreatening
