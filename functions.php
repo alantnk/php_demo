@@ -29,3 +29,15 @@ function authorize($condition, $status = Response::FORBIDDEN)
         abort($status);
     }
 }
+
+
+function base_path($path)
+{
+    return $_SERVER['DOCUMENT_ROOT'] . "/../" . $path;
+}
+
+function view($path, $attrs = [])
+{
+    extract($attrs);
+    require base_path("views/" . $path);
+}
