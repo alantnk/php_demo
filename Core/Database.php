@@ -41,7 +41,7 @@ class Database
         if (! $result) {
             abort();
         }
-
+        // dd("SPLASH");
         return $result;
     }
 

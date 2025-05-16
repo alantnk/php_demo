@@ -17,6 +17,10 @@
         <p>
             <?= htmlentities($note['body']) ?>
         </p>
+        <form class="mt-6" method="POST">
+            <input type="hidden" name="id" value="<?= $note['id'] ?>">
+            <button class="cursor-pointer text-sm text-red-500 hover:underline">Delete</button>
+        </form>
     </div>
 </main>
 <?php require base_path("views/partials/footer.php") ?>
