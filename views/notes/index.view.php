@@ -18,7 +18,7 @@
             <?php endforeach; ?>
         </ul>
         <p class="mt-6">
-            <a href="/notes/create" class="text-blue-400 px-1 rounded hover:border">+ Create Note</a>
+            <a href="/notes/create" class="text-blue-400 px-1 rounded border">+ Create Note</a>
         </p>
     </div>
 </main>
