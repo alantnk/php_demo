@@ -5,7 +5,7 @@
 <?php require base_path("views/partials/banner.php") ?>
 <main>
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <form method="POST">
+        <form method="POST" action="/notes">
             <label for="body">Text:</label>
             <div class="mb-2">
                 <textarea id="body" name="body" class="bg-blue-100 p-1 w-96 h-48" placeholder="You text here"><?= $_POST['body'] ?? "" ?></textarea>
