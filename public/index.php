@@ -4,6 +4,9 @@ require __DIR__ . "/../" . "Core/functions.php";
 
 set_exception_handler('niceExceptionHandler');
 
+
+session_start();
+
 spl_autoload_register(function ($class) {
 
     $class = str_replace("\\", DIRECTORY_SEPARATOR, $class);

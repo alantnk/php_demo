@@ -8,7 +8,7 @@ $db = App::resolve(Database::class);
 
 $errors = [];
 
-if (! Validator::string($_POST['body'], 500)) {
+if (! Validator::string($_POST['body'], 1, 500)) {
     $errors['body'] = 'Body can not be empty or exceed 500 characters.';
 }
 
