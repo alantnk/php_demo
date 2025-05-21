@@ -10,7 +10,9 @@
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         <a href="/" class="<?= urlIs('/') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Home</a>
                         <a href="/about" class="<?= urlIs('/about') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
-                        <a href="/notes" class="<?= urlIs('/notes') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Notes</a>
+                        <?php if ($_SESSION['user'] ?? false): ?>
+                            <a href="/notes" class="<?= urlIs('/notes') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Notes</a>
+                        <?php endif ?>
                         <a href="/contact" class="<?= urlIs('/contact') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
                     </div>
                 </div>
@@ -31,13 +33,27 @@
                             <button type="button" class="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                 <span class="sr-only">Open user menu</span>
                                 <?php if ($_SESSION['user'] ?? false): ?>
-                                    <span class="text-white">You are signed in</span>
+                                    <div class="flex gap-4">
+
+                                        <img src="https://cdn-icons-png.flaticon.com/512/8847/8847137.png" class="w-8" alt="pfp">
+
+                                    </div>
                                 <?php else : ?>
-                                    <a href="/register" class="text-white">Register</a>
+                                    <div class="flex gap-4">
+                                        <a href="/register" class="text-white">Register</a>
+                                        <a href="/login" class="text-white">Log In</a>
+                                    </div>
+
                                 <?php endif ?>
                             </button>
                         </div>
                     </div>
+                    <?php if ($_SESSION['user'] ?? false): ?>
+                        <form method="POST" action="/session" class="ml-4">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="cursor-pointer text-white">Log Out</button>
+                        </form>
+                    <?php endif ?>
                 </div>
             </div>
             <div class="-mr-2 flex md:hidden">
@@ -71,22 +87,27 @@
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <a href="/" class="block <?= urlIs('/') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Home</a>
             <a href="/about" class="block <?= urlIs('/about') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
-            <a href="/notes" class="block <?= urlIs('/notes') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Notes</a>
+            <?php if ($_SESSION['user'] ?? false): ?>
+                <a href="/notes" class="block <?= urlIs('/notes') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Notes</a>
+            <?php endif ?>
             <a href="/contact" class="block <?= urlIs('/contact') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
         </div>
         <div class="border-t border-gray-700 pt-4 pb-3">
             <div class="flex items-center px-5">
                 <div class="flex-shrink-0">
                     <?php if ($_SESSION['user'] ?? false): ?>
-                        <span class="text-white">You are signed in</span>
+                        <form method="POST" action="/session" class="ml-4">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="cursor-pointer text-white">Log Out</button>
+                        </form>
                     <?php else : ?>
-                        <a href="/register" class="text-white">Register</a>
+                        <div class="flex flex-col gap-2">
+                            <a href="/register" class="text-white">Register</a>
+                            <a href="/login" class="text-white">Log In</a>
+                        </div>
                     <?php endif ?>
                 </div>
-                <div class="ml-3">
-                    <div class="text-base font-medium leading-none text-white">Tom Cook</div>
-                    <div class="text-sm font-medium leading-none text-gray-400">tom@example.com</div>
-                </div>
+
                 <button type="button" class="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                     <span class="sr-only">View notifications</span>
                     <!-- Heroicon name: outline/bell -->
@@ -95,13 +116,7 @@
                     </svg>
                 </button>
             </div>
-            <div class="mt-3 space-y-1 px-2">
-                <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your Profile</a>
 
-                <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>
-
-                <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign out</a>
-            </div>
         </div>
     </div>
 </nav>

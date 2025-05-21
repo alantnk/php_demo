@@ -4,6 +4,7 @@ use Core\App;
 use Core\Database;
 use Core\Validator;
 
+$db = App::resolve(Database::class);
 $email = $_POST['email'];
 $password = $_POST['password'];
 
@@ -27,7 +28,6 @@ if (! empty($errors)) {
 
 // Check if the resource already exists
 
-$db = App::resolve(Database::class);
 $user = $db->query('select * from users where email = :email', ['email' => $email])->find();
 if ($user) {
     // If yes, redirect to login page
@@ -40,7 +40,7 @@ if ($user) {
         'password' => password_hash($password, PASSWORD_BCRYPT)
     ]);
 
-    $_SESSION['user'] = ['email' => $email];
+    login($user);
     header('location: /');
     die();
 }
