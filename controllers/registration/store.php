@@ -37,7 +37,7 @@ if ($user) {
     // If not, save one to the database, then log user in, and the redirect
     $db->query('INSERT INTO notes.users (email, password) VALUES(:email, :password)', [
         'email' => $email,
-        'password' => $password
+        'password' => password_hash($password, PASSWORD_BCRYPT)
     ]);
 
     $_SESSION['user'] = ['email' => $email];
