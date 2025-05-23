@@ -1,6 +1,7 @@
 <?php
 
 use Core\Response;
+use Core\Session;
 
 function niceExceptionHandler($ex)
 {
@@ -55,4 +56,9 @@ function redirect($path)
 {
     header("location: {$path}");
     die();
+}
+
+function old($key, $default = '')
+{
+    return Session::get('old')[$key] ?? $default;
 }

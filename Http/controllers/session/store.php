@@ -19,4 +19,5 @@ if ($form->validate($email, $password)) {
     $form->error('email', 'No user found for that email address and password.');
 }
 Session::flash('errors', $form->errors());
+Session::flash('old', ['email' => $email]);
 redirect("/login");
