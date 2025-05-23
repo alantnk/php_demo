@@ -1,5 +1,7 @@
 <?php
 
+use Core\Session;
+
 require __DIR__ . "/../" . "Core/functions.php";
 
 set_exception_handler('niceExceptionHandler');
@@ -22,4 +24,7 @@ $routes = require base_path('routes.php');
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
+
 $router->route($uri, $method);
+
+Session::unflash();

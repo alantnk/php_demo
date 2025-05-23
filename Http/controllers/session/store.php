@@ -1,13 +1,14 @@
 <?php
 
 use Core\Authenticator;
+use Core\Session;
 use Http\Forms\LoginForm;
 
 $email = $_POST['email'];
 $password = $_POST['password'];
 
 $form = new LoginForm();
-if (! $form->validate($email, $password)) {
+if ($form->validate($email, $password)) {
 
     $auth = new Authenticator();
 
@@ -17,7 +18,5 @@ if (! $form->validate($email, $password)) {
 
     $form->error('email', 'No user found for that email address and password.');
 }
-
-return view('session/create.view.php', [
-    'errors' => $forms->errors()
-]);
+Session::flash('errors', $form->errors());
+redirect("/login");
