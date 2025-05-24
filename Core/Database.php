@@ -25,8 +25,12 @@ class Database
         $this->statement = $this->connection->prepare($query);
 
         $this->statement->execute($params);
-
         return $this;
+    }
+
+    public function insertedId()
+    {
+        return $this->connection->lastInsertId();
     }
 
     public function find()

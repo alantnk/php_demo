@@ -34,12 +34,12 @@ if ($user) {
     Session::flash('errors', ['email' => 'This email is already in use.']);
     redirect("/register");
 } else {
-    $user = $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
+    $userId = $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
         'email' => $email,
         'password' => password_hash($password, PASSWORD_BCRYPT)
-    ]);
-
-    (new Authenticator)->login(['email' => $email, 'id' => $user['id']]);
+    ])->insertedId();
+    Session::flush();
+    (new Authenticator)->login(['email' => $email, 'id' => $userId]);
 
     redirect("/");
 }
