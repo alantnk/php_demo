@@ -9,8 +9,9 @@ $currentUserId = 2;
 
 $db = App::resolve(Database::class);
 
-$note = $db->query('select * from notes where id = :id', [
+$note = $db->query('select * from notes where id = :id and user_id = :user_id', [
     'id' => $_POST['id'],
+    'user_id' => $currentUserId
 
 ])->findOrFail();
 
