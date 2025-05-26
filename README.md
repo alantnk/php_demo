@@ -2,6 +2,7 @@
 
 Repositório para estudos em PHP. 
 
+
 ### MySQL
 
 ```sql
@@ -25,3 +26,7 @@ CREATE TABLE `notes` (
   CONSTRAINT `fk_notes_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
+
+### Run commands
+
+`composer run dev`

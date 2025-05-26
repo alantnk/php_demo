@@ -1,0 +1,13 @@
+{
+    "name": "tnk/php_demo",
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Http\\": "Http/"
+        }
+    },
+    "scripts": {
+        "dev": "php -S 127.0.0.1:8000 -t public"
+    },
+    "require": {}
+}
